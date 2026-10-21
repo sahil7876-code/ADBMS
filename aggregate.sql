@@ -5,22 +5,33 @@ insert into employee values(1,'john','allen','M','team leader','retail','m11'),
 						(2,'kim','allen','F','team leader','finance','m12'),(3,'john','all','M','manager','retail','m13'),
                         (4,'jack','auro','M','president','hr','m14'),(5,'john','mackkk','F','precident','hr','m15');
 select * from employee;
+
 select distinct dept from employee order by dept;
+
 select * from employee where role='president' and dept='hr';
 select * from employee where role='president' or dept='finance';
+
 select * from employee where role in ('president','manager','ceo');
 select * from employee where role not in ('precident','manager','ceo');
+
 alter table employee add column experience int;
+
 update employee set experience =8 where empid=1;
 update employee set experience =18 where empid=2;
 update employee set experience =9 where empid=3;
 update employee set experience =9 where empid=4;
 update employee set experience =4 where empid=5;
+
 update employee set role ='team leader' where empid=6;
+
 select * from employee where experience between 6 and 10;
+
 select * from employee where experience=9 or experience=18;
+
 select * from employee where last_name like 'a%';
+
 select * from employee order by experience limit 5;
+
 insert into employee values(6,'jmyu','llen','M','tm',null,' ',8);
 
 select * from employee where manager_id is not null;
