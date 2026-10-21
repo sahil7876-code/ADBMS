@@ -1,15 +1,36 @@
+/*Filtering data from tables
+Where,select Distinct,nd,or,not ,in,between,Like,limit,is null*/
+
 create database organization;
 use organization;
-create table employee(empid int not null primary key,first_name varchar(15),last_name varchar(15),gender char,role varchar(15),dept varchar(15),manager_id varchar(10));
+
+create table employee(empid int not null primary key, first_name varchar(15), 
+							last_name varchar(15), gender char, 
+                            role varchar(15), dept varchar(15), 
+                            manager_id varchar(10));
+                            
 insert into employee values(1,'john','allen','M','team leader','retail','m11'),
 						(2,'kim','allen','F','team leader','finance','m12'),(3,'john','all','M','manager','retail','m13'),
                         (4,'jack','auro','M','president','hr','m14'),(5,'john','mackkk','F','precident','hr','m15');
+
 select * from employee;
 
+/*Distinct clause gets all the unique values of the the column*/
 select distinct dept from employee order by dept;
+select distinct dept from employee order by role;
 
+/*And Operator :is a a logical oprator that combines two ir more boolean expressions and reurns 1,0,NUll .the And operator is uded for filtering data with the where clause*/
 select * from employee where role='president' and dept='hr';
+select * from employee where role='team leader' and dept='hr';
+
+/*OR operator: the Or Operator is a logical operator that combines two boolean expressions and returns 1
+(true) if either of the expressions is true.
+The Or Operator is used for filtering data WITH the where Clause*/
+
 select * from employee where role='president' or dept='finance';
+
+
+/*In Operator : The IN operator is uesd to detrmine if a value*/
 
 select * from employee where role in ('president','manager','ceo');
 select * from employee where role not in ('precident','manager','ceo');
@@ -24,16 +45,21 @@ update employee set experience =4 where empid=5;
 
 update employee set role ='team leader' where empid=6;
 
-select * from employee where experience between 6 and 10;
+/*Between Operator: the Between operator is a logical operator that detrmines whwther a value belongs in a range.
+The between operator value belongs in a */
 
+select * from employee where experience between 6 and 10;
 select * from employee where experience=9 or experience=18;
 
+/*Like Operator: the Like Operator is a logical operator thet determines whether or not a string contains a specifed pattern*/
 select * from employee where last_name like 'a%';
 
+/*Limit operator :the limit clause in the SELECT statment is used to limit the number if rows returned*/
 select * from employee order by experience limit 5;
 
 insert into employee values(6,'jmyu','llen','M','tm',null,' ',8);
-
+/*Is Null operator detrimines whether or not a value is null or not*/
+select * from employee where manager_id is null;
 select * from employee where manager_id is not null;
 
 
